@@ -15,7 +15,7 @@ function backtrack(list,temp,nums){
     //递归终止条件，如果当前排列了所有数字，说明找到了一个排列结果，push到list中
     if(temp.length === nums.length){
         //这里注意要push temp的拷贝，因为temp参数是按引用传入的
-        list.push([...temp])
+        return list.push([...temp])
     }
     //从nums的第1个元素开始遍历，填到temp中
     for(let i = 0;i<nums.length;i++){
