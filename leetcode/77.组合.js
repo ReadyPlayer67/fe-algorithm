@@ -1,10 +1,14 @@
 /**
+ * 利用回溯求[1,2,...n]这些数字所有的k个数的组合
  * @param {number} n
  * @param {number} k
  * @return {number[][]}
  */
-var combine = function(n, k) {
+const combine = function(n, k) {
+    //套路和46题求全排列基本一致，只是排列是有顺序的，而组合是无序的
+    //在排列中[1,2],[2,1]算两个结果，而组合中只能算一个
     let list = []
+    //所以我们需要多传一个参数start
     backtrack(list,[],n,k,1)
     return list
 };
