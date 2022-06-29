@@ -35,7 +35,7 @@ const coinChange = function (coins, amount) {
     for(let i=0;i<coins.length;i++){
         for(let j=1;j<=amount;j++){
             if(coins[i] <= j){
-                //其实这里和画图标类似，只不过每次求到更小值会覆盖当前数组项，而不是像图表一样另起一行
+                //其实这里和画图表类似，只不过每次求到更小值会覆盖当前数组项，而不是像图表一样另起一行
                 dp[j] = Math.min(dp[j], dp[j- coins[i]] + 1);
             }
         }
