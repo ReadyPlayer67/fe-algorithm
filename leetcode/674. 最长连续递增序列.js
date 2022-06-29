@@ -28,12 +28,18 @@ const findLengthOfLCIS = function(nums) {
 };
 
 const findLengthOfLCIS2 = (nums) => {
+    //初始化一个数组，数组长度等于nums，dp[i]等于以下标i为结尾的数组的连续递增的子序列长度，初始值都是1
+    //注意这里的定义，一定是以下标i为结尾，并不是说一定以下标0为起始位置
     let dp = new Array(nums.length).fill(1)
     let ret = 1
     for (let i = 0; i < nums.length; i++) {
+        //递推公式，如果nums[i + 1] > nums[i]，
+        //那么以 i+1 为结尾的数组的连续递增的子序列长度一定等于 以i为结尾的数组的连续递增的子序列长度 + 1
+        //这里和300题最长递增子序列有区别，本题要求的是连续的，所以不必再去遍历i之前的每一项j
         if(nums[i+1] > nums[i]){
             dp[i+1] = dp[i] + 1
         }
+        //更新结果，记录下当前最长连续递增子序列的长度
         if(dp[i+1] > ret) ret = dp[i+1]
     }
     console.log(dp)
