@@ -26,3 +26,17 @@ const findLengthOfLCIS = function(nums) {
     //最后找出最大值，就是这个数组中最长连续递增子序列长度
     return Math.max(...dp)
 };
+
+const findLengthOfLCIS2 = (nums) => {
+    let dp = new Array(nums.length).fill(1)
+    let ret = 1
+    for (let i = 0; i < nums.length; i++) {
+        if(nums[i+1] > nums[i]){
+            dp[i+1] = dp[i] + 1
+        }
+        if(dp[i+1] > ret) ret = dp[i+1]
+    }
+    console.log(dp)
+    return ret
+}
+findLengthOfLCIS2([1,3,5,4,7])
