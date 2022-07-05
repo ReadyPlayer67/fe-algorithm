@@ -21,7 +21,7 @@ var isSubtree = function(root, subRoot) {
     if(root.val === subRoot.val){
         //用isSameTree判断两棵树是否是相同的树，如果是相同的树return true
         //注意这里不能写return isSameTree(root,subRoot)
-        //因为如果不是相同的树，不能退出方法返回false，因为我们还需要继续递归对比root的子树
+        //因为如果不是相同的树，不能退出方法返回false，我们还需要继续递归对比root的子树
         if(isSameTree(root,subRoot)){
             return true
         }
