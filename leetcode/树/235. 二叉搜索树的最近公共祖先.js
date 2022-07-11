@@ -24,7 +24,7 @@ var lowestCommonAncestor = function(root, p, q) {
     //对于root,p,q的val一共有三种情况
     //1.root<q<p说明p和q在root的右子树，直接去右子树上找
     //2.root>p>q说明p和q在root的左子树，直接去左子树上找
-    //3.其他情况，root在p和q中间或者root===p||root===q，说明root就是我们要找的节点，直接返回root
+    //3.p,q不在同一子树，只能是p，q分别在一左一右，或者，p，q其中一个是根节点，都返回root
     if(root.val > p.val && root.val > q.val){
         return lowestCommonAncestor(root.left,p,q)
     }
