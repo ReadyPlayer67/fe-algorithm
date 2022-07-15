@@ -11,7 +11,7 @@ var partition = function(s) {
     let ret = []
     let path = []
     //这里的参数start指上一次切割的结束位置，这一次切割就得从该位置开始切割
-    function backtrack(start){要
+    function backtrack(start){
         //递归终止条件，当上一次切割的结束位置等于字符串长度，说明整个字符串被检查完了
         //把当前路径push到ret中并退出递归，进行回溯检查下一个可能的解
         if(start >= s.length){
@@ -37,7 +37,7 @@ var partition = function(s) {
     backtrack(0)
     return ret
 };
-
+//验证s字符串l和r位置中间的子串是否是回文的，可以参考125.验证回文串
 function isPalindrome(s,l,r) {
     for(let i=l,j=r;i<j;i++,j--){
         if(s[i]!==s[j]){
