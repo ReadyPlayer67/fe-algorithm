@@ -12,7 +12,7 @@ var combinationSum2 = function(candidates, target) {
         if(sum === target){
             ret.push([...path])
             return
-        }else if(sum > target){
+        }else if(sum > target){//这里要注意剪枝，不然可能复杂的求解会超时
             return
         }
         for(let i=start;i<candidates.length;i++){
