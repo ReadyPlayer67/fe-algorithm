@@ -62,7 +62,6 @@ var numDistinct2 = function(s, t) {
             }
         }
     }
-    debugger
     return dp[n][m]
 };
 

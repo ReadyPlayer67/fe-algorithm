@@ -28,4 +28,29 @@ var longestCommonSubsequence = function(text1, text2) {
     return dp[m][n]
 };
 
-console.log(longestCommonSubsequence('ace','abcde'))
+//递归+记忆化搜索版本
+var longestCommonSubsequence2 = function(text1, text2) {
+    let m = text1.length
+    let n = text2.length
+    let dp = new Array(m+1).fill(0).map(x=>new Array(n+1).fill(-1))
+    return process(text1,text2,m,n,dp)
+};
+
+function process(str1,str2,i,j,dp){
+    if(i === 0 || j === 0){
+        return 0
+    }
+    if(dp[i][j] !== -1){
+        return dp[i][j]
+    }
+    let ans = 0
+    if(str1[i-1] === str2[j-1]){
+        ans = process(str1,str2,i-1,j-1,dp) + 1
+    }else{
+        ans = Math.max(process(str1,str2,i-1,j,dp),process(str1,str2,i,j-1,dp))
+    }
+    dp[i][j] = ans
+    return ans
+}
+
+console.log(longestCommonSubsequence2('ace','abcde'))
