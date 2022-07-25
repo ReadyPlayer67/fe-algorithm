@@ -1,0 +1,20 @@
+{
+  "name": "fe-algorithm",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ReadyPlayer67/fe-algorithm.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ReadyPlayer67/fe-algorithm/issues"
+  },
+  "homepage": "https://github.com/ReadyPlayer67/fe-algorithm#readme"
+}

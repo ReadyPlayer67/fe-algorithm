@@ -1,5 +1,5 @@
 //https://visualgo.net/zh/heap 直观地理解堆
-class Heap{
+export class Heap{
     constructor(compare) {
         //让arr的下标从1开始，便于计算left和parent下标
         this.arr = [0]
@@ -19,7 +19,7 @@ class Heap{
     }
     //获取父节点的索引
     parent(k){
-        return Math.floor(k/2)
+        return k >> 1
     }
     //向堆中插入一个元素
     push(item){
@@ -54,12 +54,12 @@ class Heap{
         //初始化一个下标，默认为k
         let element = k
         //如果k存在左子节点且左子节点大于element的值，就把left(k)赋值给element
-        if(left(k) < size && compare(arr[left(k)],arr[element])){
+        if(left(k) <= size && compare(arr[left(k)],arr[element])){
             element = left(k)
         }
         //如果k存在右子节点且右子节点大于element的值，就把right(k)赋值给element
         //此时element就是三个节点中最大的
-        if(right(k) < size && compare(arr[right(k)],arr[element])){
+        if(right(k) <= size && compare(arr[right(k)],arr[element])){
             element = right(k)
         }
         //如果element===k就不用交换
