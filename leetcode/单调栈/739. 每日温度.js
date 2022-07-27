@@ -25,6 +25,7 @@ var dailyTemperatures = function(temperatures) {
  * @return {number[]}
  */
 var dailyTemperatures2 = function(temperatures) {
+    //通常是一维数组，要寻找任一个元素的右边或者左边第一个比自己大或者小的元素的位置，此时我们就要想到可以用单调栈了。
     let n = temperatures.length
     //先初始化一个结果数组
     let ret = new Array(n).fill(0)
