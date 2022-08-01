@@ -7,27 +7,36 @@
  * }
  */
 /**
- * 判断二叉树中是否存在路径，使得路径上所有节点的val总和等于targetSum
  * @param {TreeNode} root
  * @param {number} targetSum
  * @return {boolean}
  */
 var hasPathSum = function(root, targetSum) {
-    //我的解法，先序遍历
-    let ret = false
+    //这道题的dfs方法需要有返回值，因为我们只需要检测到有一个路径满足sum === targetSum即可返回，不需要遍历所有路径
     function dfs(node,sum){
-        if(node){
-            //如果节点存在，sum就加上他的val
-            sum += node.val
-            //如果节点是叶子节点，就判断当前的sum是否和目标相等，如果相等就把ret修改为true
-            if(node.left === null && node.right === null) {
-                ret = sum ===targetSum
-            }
-            //否则就继续递归遍历左右子节点
-            dfs(node.left,sum)
-            dfs(node.right,sum)
+        //递归终止条件：节点为null
+        if(!node){
+            return false
         }
+        //累加sum
+        sum += node.val
+        //当该节点为叶子节点且sum===targetSum，找到一个解，return true
+        if(!node.left && !node.right && sum  === targetSum){
+            return true
+        }
+        //否则该节点为叶子节点的话返回false
+        if(!node.left && !node.right){
+            return false
+        }
+        //父节点如果接收到子节点返回的true，直接返回true，不必再继续查询了
+        if(node.left && dfs(node.left,sum)){
+            return true
+        }
+        if(node.right && dfs(node.right,sum)){
+            return true
+        }
+        //否则返回false
+        return false
     }
-    dfs(root,0)
-    return ret
+    return dfs(root,0)
 };
