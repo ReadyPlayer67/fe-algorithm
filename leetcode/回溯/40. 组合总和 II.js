@@ -30,4 +30,43 @@ var combinationSum2 = function(candidates, target) {
     backtrack(0,0)
     return ret
 };
-console.log(combinationSum2([14,6,25,9,30,20,33,34,28,30,16,12,31,9,9,12,34,16,25,32,8,7,30,12,33,20,21,29,24,17,27,34,11,17,30,6,32,21,27,17,16,8,24,12,12,28,11,33,10,32,22,13,34,18,12],27))
+
+/**
+ * @param {number[]} candidates
+ * @param {number} target
+ * @return {number[][]}
+ */
+var combinationSum21 = function(candidates, target) {
+    //set去重法
+    let ret = []
+    //!!!!重要，用set法去重（树层去重）一定要先对数组进行排序，比如[1,2,1],target=3，一开始useSet={1}，递归找到一个解[1,2]
+    //如果没排序pop完以后就会从2开始试，此时本层的useSet={1}，不过continue，这样就会出现重复解[2,1]，起不到去重效果了
+    //而如果排序了以后[1,1,2]，在找到第一个解[1,2]后第二次又从1开始尝试，此时会被useSet={1}跳过
+    //而第三次尝试2时，数组里已经没有数字了，就不会出现重复解
+    candidates.sort()
+    function backtrack(path,start,sum){
+        //用一个set来对本层元素进行去重
+        let useSet = new Set()
+        if(sum === target){
+            ret.push([...path])
+            return
+        }
+        if(sum > target){
+            return
+        }
+        debugger
+        for(let i=start;i<candidates.length;i++){
+            if(useSet.has(candidates[i])){
+                continue
+            }
+            path.push(candidates[i])
+            useSet.add(candidates[i])
+            backtrack(path,i+1,sum+candidates[i])
+            path.pop()
+        }
+    }
+    backtrack([],0,0)
+    return ret
+};
+
+console.log(combinationSum21([2,5,2,1,2],5))

@@ -27,3 +27,29 @@ var subsetsWithDup = function(nums) {
     backtrack(0)
     return ret
 };
+
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var subsetsWithDup2 = function(nums) {
+    //类似491.递增子序列的set去重解法，用一个set放置每层使用过的数字
+    //避免每一层递归使用重复的数字
+    let ret = []
+    nums.sort()
+    function backtrack(path,start){
+        let useSet = new Set()
+        ret.push([...path])
+        for(let i=start;i<nums.length;i++){
+            if(useSet.has(nums[i])){
+                continue
+            }
+            path.push(nums[i])
+            useSet.add(nums[i])
+            backtrack(path,i+1)
+            path.pop()
+        }
+    }
+    backtrack([],0)
+    return ret
+};
