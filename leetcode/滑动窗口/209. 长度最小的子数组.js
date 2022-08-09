@@ -26,4 +26,24 @@ var minSubArrayLen = function(target, nums) {
     return ret===Infinity?0:ret
 };
 
+//滑动窗口解法，可以参考3.无重复字符得最长子串
+var minSubArrayLen2 = function(target, nums) {
+    let min = Infinity
+    let right = 0
+    let sum = 0
+    for(let i=0;i<nums.length;i++){
+        if(i > 0){
+            sum -= nums[i-1]
+        }
+        while(right < nums.length && sum < target){
+            sum += nums[right]
+            right++
+        }
+        if(sum >= target){
+            min = Math.min(min,right-i)
+        }
+    }
+    return min === Infinity ? 0 :min
+};
+
 console.log(minSubArrayLen(7,[2,3,1,2,4,3]))
