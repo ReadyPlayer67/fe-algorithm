@@ -10,7 +10,6 @@ var findMin = function(nums) {
     // 则进入最后一个循环的时候，left = right = mid，都指向最小值，接着执行left = mid + 1。
     // 这时，left便跑到mid和right右边一位去了，因此若要用while(left <= right)条件必须返回 nums[right] 或者 nums[left - 1]
     while(left<right){
-        debugger
         let mid = (right+left)>>1
         //如果中间项小于right，说明中间项右边都是递增的，最小项肯定不在右边
         //把范围缩小到中间项左边区域
