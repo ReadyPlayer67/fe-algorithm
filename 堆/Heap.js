@@ -28,7 +28,7 @@ export class Heap{
         //之后执行上浮操作
         this.shiftUp(this.arr.length-1)
     }
-    //上浮方法就是比较一个节点和他的父节点的值，如果是最大堆切值大于父节点的值，就交换这两个节点的位置，直到小于父节点的值
+    //上浮方法就是比较一个节点和他的父节点的值，如果是最大堆且值大于父节点的值，就交换这两个节点的位置，直到小于父节点的值
     shiftUp(k){
         const {compare,parent,arr} = this
         while(k > 1 && compare(arr[k],arr[parent(k)])){
@@ -76,14 +76,14 @@ export class Heap{
         return this.arr[1]
     }
 }
-let heap = new Heap((a,b)=>a>b) //最大堆（最大的元素在堆顶）
-heap.push(3)
-heap.push(1)
-heap.push(2)
-heap.push(4)
-console.log(heap.arr)
-console.log(heap.pop())
-console.log(heap.pop())
-console.log(heap.pop())
-console.log(heap.arr)
-console.log('='.repeat(20))
+// let heap = new Heap((a,b)=>a>b) //最大堆（最大的元素在堆顶）
+// heap.push(3)
+// heap.push(1)
+// heap.push(2)
+// heap.push(4)
+// console.log(heap.arr)
+// console.log(heap.pop())
+// console.log(heap.pop())
+// console.log(heap.pop())
+// console.log(heap.arr)
+// console.log('='.repeat(20))
