@@ -17,6 +17,7 @@ var rotate = function(matrix) {
             //将最上面一行的元素旋转到最右边一列
             matrix[i][end] = matrix[start][i]
             //将最下面一行的元素缓存起来
+            //这里注意右边界和下边界的下标是n-1-i而不是end-i，因为i本身就是从start起始的
             let tmp2 = matrix[end][n-1-i]
             //将最右边一列的元素旋转到最下面一行
             matrix[end][n-1-i] = tmp1

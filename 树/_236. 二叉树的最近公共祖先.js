@@ -41,12 +41,13 @@ var lowestCommonAncestor = function(root, p, q) {
 };
 
 //递归解法
-var lowestCommonAncestor = function(root, p, q) {
+var lowestCommonAncestor2 = function(root, p, q) {
     //递归的终止条件有两个，一个是节点为null
     if(root === null){
         return null
     }
-    //还有一个是节点是p或者q，如果是p就返回p，q就返回q
+    //还有一种情况是节点是p或者q，如果是p就返回p，q就返回q，没必要再往下找了
+    //就算root是p，q在p的子树上，p就是他们俩最近的公共祖先，返回p没问题
     if(root === p || root === q){
         return root
     }
