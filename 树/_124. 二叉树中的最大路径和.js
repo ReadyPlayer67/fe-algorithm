@@ -25,6 +25,8 @@ var maxPathSum = function(root) {
         //我们求到当前子树内部的路径的最大路径总和，这个路径必须经过node（否则就是node子树的内部路径了）
         //这个路径总和=左子树提供的最大收益+node.val+右子树提供的最大收益
         const innerMaxSum = node.val + left + right
+        //也可以这么写，考虑不走入左右节点，这样最后就不用判断outPutSum < 0 ? 0 : outPutSum了
+        // const innerMaxSum = Math.max(0,left,right,left+right)+node.val
         //和全局最大路径总和比较，不断更新maxSum
         maxSum = Math.max(innerMaxSum,maxSum)
         //最后我们需要把当前这棵树能提供的最大收益返回出去，给他的父节点使用
@@ -35,8 +37,8 @@ var maxPathSum = function(root) {
         //3.走右子树，此时收益是right+node.val
         //我们对这三种情况比较取最大值，就是这棵树能够返回给他父节点的最大收益了
         const outPutSum = Math.max(0,left,right) + node.val
-        //这里有一个优化，如果返回的收益是负数，说明走入这颗子树收益会下降，那么他应该告诉他的父节点，每必要走入了
-        //直接和对待null节点一样返回0
+        //这里有一个注意点，如果返回的收益是负数，说明走入这颗子树收益会下降，那么他应该告诉他的父节点，每必要走入了，直接和对待null节点一样返回0
+        //因为我们上面innerMaxSum = node.val + left + right，设定的是node必走入他的两个子节点
         return outPutSum < 0 ? 0 : outPutSum
     }
     dfs(root)

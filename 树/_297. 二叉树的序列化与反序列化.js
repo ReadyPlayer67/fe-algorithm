@@ -85,7 +85,35 @@ var deserialize = function(data) {
     return root
 };
 
-/**
- * Your functions will be called as such:
- * deserialize(serialize(root));
- */
+//递归写法
+var serialize2 = function(root) {
+    //如果遇到空节点，返回一个字符串'X'
+    if(root === null){
+        return 'X'
+    }
+    //递归处理左右子树
+    const left = serialize(root.left)
+    const right = serialize(root.right)
+    //把根节点的值放在前面，左右子树的字符串放在后面，拼接字符串
+    return `${root.val},${left},${right}`
+};
+
+var deserialize2 = function(data) {
+    //将字符串转换为数组
+    const list = data.split(',')
+    function dfs(list){
+        //根节点就是当前数组第一个元素，把他弹出
+        let rootVal = list.shift()
+        //如果值是X，就说明是空节点，return null
+        if(rootVal === 'X'){
+            return null
+        }
+        //构造一个root节点
+        let root = new TreeNode(rootVal)
+        //递归处理他的左右子树
+        root.left = dfs(list)
+        root.right = dfs(list)
+        return root
+    }
+    return dfs(list)
+};
