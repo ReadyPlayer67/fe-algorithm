@@ -33,8 +33,9 @@ var reverseKGroup = function(head, k) {
         let next = tail.next;
         //翻转子链表
         [head,tail] = myReverse(head,tail)
-        //把子链表拼回原来的链表 pre -> 3->2->1 ->next
+        //把子链表head拼回原来的链表 pre -> 3->2->1 ->next
         pre.next = head
+        //将反转后的子链表tail接回原先的tail.next节点
         tail.next = next
         //重新计算pre和head，进一步向后翻转
         pre = tail
@@ -42,9 +43,9 @@ var reverseKGroup = function(head, k) {
     }
     return dummy.next
 };
-//翻转子链表的方法
+//翻转子链表的方法，和反转链表一样
 function myReverse(head,tail){
-    let prev = tail.next
+    let prev = null
     let p = head
     while(prev !== tail){
         const next = p.next
