@@ -18,7 +18,7 @@ var restoreIpAddresses = function(s) {
             ret.push(path.join('.'))
             return
         }
-        //从start开始，依次切割长度为1,3,4的字符串
+        //从start开始，依次切割长度为1,2,3的字符串
         for(let i=start;i<s.length;i++){
             let str = s.substring(start,i+1)
             if(isValid(str)){

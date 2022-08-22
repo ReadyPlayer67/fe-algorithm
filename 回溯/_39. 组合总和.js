@@ -9,7 +9,7 @@ var combinationSum = function(candidates, target) {
     backtrack(0,[],0)
     return ret
     //backtrack方法sum:代表当前path数字总和，path:当前组合的数字
-    //start:因为是求组合而不是排列，[2,2,3]和[2.3.2]这样重复的只能算一个path，所以需要一个变量start来确定遍历起始位置
+    //start:因为是求组合而不是排列，[2,2,3]和[2,3,2]这样重复的只能算一个path，所以需要一个变量start来确定遍历起始位置
     function backtrack(sum,path,start){
         //两种退出情况，如果sum等于target，找到一个解
         if(sum === target){
