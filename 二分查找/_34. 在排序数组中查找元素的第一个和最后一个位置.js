@@ -42,4 +42,4 @@ var searchRange = function(nums, target) {
     }
     return [min,max]
 };
-console.log(searchRange([5,6,7,7,7,8,10],9))
+console.log(searchRange([5,6,8,8,10],8))
