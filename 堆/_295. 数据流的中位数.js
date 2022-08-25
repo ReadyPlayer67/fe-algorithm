@@ -2,7 +2,7 @@ import {Heap} from "./Heap.js";
 //初始化两个堆（优先队列）
 var MedianFinder = function() {
     //最大堆存放比中位数小的数，最小堆存放比中位数大的数
-    //如果总数是偶数，最大堆和最小堆中的数就一样多，如果总数是基数，就约定最大堆比最小堆size大1
+    //如果总数是偶数，最大堆和最小堆中的数就一样多，如果总数是奇数，就约定最大堆比最小堆size大1
     this.maxHeap = new Heap((a,b)=>a>b)
     this.minHeap = new Heap((a,b)=>a<b)
 };
