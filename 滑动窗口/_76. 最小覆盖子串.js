@@ -6,12 +6,12 @@
 var minWindow = function(s, t) {
     //我的解法，哈希表+滑动窗口
     //用一个map记录t每个字符出现的次数
-    let map = {}
+    let tMap = {}
     for(let char of t){
-        if(map[char]){
-            map[char]++
+        if(tMap[char]){
+            tMap[char]++
         }else{
-            map[char]=1
+            tMap[char]=1
         }
     }
     //再用一个map记录s每个字符出现的次数
@@ -30,7 +30,7 @@ var minWindow = function(s, t) {
             }
         }
         //如果有窗口未到字符串末尾并且s没有覆盖t，这时候右窗口需要右移
-        while(right < s.length && !check(map,sMap)){
+        while(right < s.length && !check(tMap,sMap)){
             //sMap需要添加字符出现次数
             if(s[right] in sMap){
                 sMap[s[right]]++
@@ -40,7 +40,7 @@ var minWindow = function(s, t) {
             right++
         }
         //如果当前滑动窗口复合要求，判断窗口大小是否小于全局的最小滑动窗口大小，如果是就更新全局滑动窗口大小
-        if(check(map,sMap)){
+        if(check(tMap,sMap)){
             if(right-i<minRight-minLeft){
                 minRight = right
                 minLeft = i
@@ -53,9 +53,9 @@ var minWindow = function(s, t) {
 };
 //定义一个方法，检查t中所有字符字符得出现次数是否都小于s中字符出现次数
 //也就是s是否涵盖t中所有的字符
-function check(map,sMap){
-    for(let key in map){
-        if(!sMap[key] || sMap[key] < map[key]){
+function check(tMap,sMap){
+    for(let key in tMap){
+        if(!sMap[key] || sMap[key] < tMap[key]){
             return false
         }
     }
