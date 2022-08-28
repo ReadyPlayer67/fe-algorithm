@@ -4,7 +4,7 @@ var MinStack = function() {
     //用来返回最小值的辅助栈，该辅助栈的最后一位代表当前栈中的最小值，有一个初始值Infinity
     //比如先push-2,再push0，再push-3
     //stack=[-2,0,-3]
-    //stack=[-2,-2,-3]
+    //mins=[-2,-2,-3]
     this.mins = [Infinity]
 };
 
