@@ -17,5 +17,8 @@ var findLength = function(nums1, nums2) {
             res = Math.max(dp[i][j],res)
         }
     }
+    debugger
     return res
 }
+
+findLength([1,2,3,2,1],[3,2,1,4,7])
