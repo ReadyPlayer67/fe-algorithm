@@ -38,12 +38,7 @@ var judgePoint24 = function(cards) {
             if(n2 !== 0){
                 isValid = isValid || judgePoint24([...newNums,n1/n2])
             }
-            //如果isValid，返回true，外层的递归接收到true，也不会继续执行后面的回溯了，最终直接返回true
-            if(isValid){
-                return true
-            }
         }
     }
-    //如果所有回溯执行完，isValid还是false，最终返回false
-    return false
+    return isValid
 };
