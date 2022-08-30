@@ -63,3 +63,47 @@ var decodeString = function(s) {
 function isDigit(s){
     return !isNaN(Number(s))
 }
+
+//官方解法，更简洁
+var decodeString2 = function(s) {
+    //维护一个栈，遍历字符串s：
+    let stack = []
+    let i = 0
+    while(i<s.length){
+        const char = s[i]
+        //1.当遇到数字时，解析出一个数字并入栈
+        if(isDigit(char)){
+            let num = ''
+            while(isDigit(s[i])){
+                num+=s[i]
+                i++
+            }
+            stack.push(+num)
+            //2.当遇到[时，直接入栈
+        }else if(char === '['){
+            stack.push(char)
+            i++
+        }else if(char === ']'){
+            //3.当遇到]时，从栈中弹出[前的字母和[，拼接成一个字符串，此时栈顶的元素一定为之前解析出的数字
+            //用repeat方法构造出新的字符串并继续入栈
+            let strArr = []
+            while(stack[stack.length-1] !== '['){
+                strArr.unshift(stack.pop())
+            }
+            let str = strArr.join('')
+            stack.pop()
+            let num = stack.pop()
+            str = str.repeat(num)
+            stack.push(str)
+            i++
+        }else{
+            //4.当遇到字母时，同样直接入栈
+            stack.push(char)
+            i++
+        }
+    }
+    //最后将栈中所有的字符串拼接起来就得到了结果
+    return stack.join('')
+};
+
+console.log(decodeString2("3[a]2[bc]"))
