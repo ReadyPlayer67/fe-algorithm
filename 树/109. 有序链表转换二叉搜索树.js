@@ -43,3 +43,25 @@ var sortedListToBST = function(head) {
     }
     return dfs(list)
 };
+
+//快慢指针确认链表中点
+var sortedListToBST2 = function(head) {
+  if(head === null){
+    return null
+  }
+  let slow = head
+  let fast = head
+  let preSlow
+  while(fast && fast.next){
+    preSlow = slow
+    slow = slow.next
+    fast = fast.next.next
+  }
+  let root = new TreeNode(slow.val)
+  if(preSlow){
+    preSlow.next = null
+    root.left = sortedListToBST(head)
+  }
+  root.right = sortedListToBST(slow.next)
+  return root
+};
