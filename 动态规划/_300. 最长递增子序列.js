@@ -30,7 +30,7 @@ const lengthOfLIS = function(nums) {
     //最后找出dp中的最大值，就是nums的最长递增子序列长度
     return Math.max(...dp)
 };
-console.log(lengthOfLIS([1,7,2,4]))
+// console.log(lengthOfLIS([1,7,2,4]))
 
 //贪心+二分解法，时间复杂度O(n*logn)
 const lengthOfLIS2 = function(nums ) {
@@ -44,14 +44,13 @@ const lengthOfLIS2 = function(nums ) {
     //为什么要进行替换呢，因为我们要让最长递增子序列尽可能增长的慢，也就是让最长递增子序列最后一位元素的值尽可能小
     //如果不替换，比如上面arr=[1,7]不把7替换成2，这样遇到下一个元素4的时候就不会push了，也就无法得到最长的递增子序列了
     let arr = [nums[0]]
-    for(let i=0;i<nums.length;i++){
+    for(let i=1;i<nums.length;i++){
         if(nums[i] > arr[arr.length-1]){
             arr.push(nums[i])
         }else{
             //二分查找
             let left = 0
             let right = arr.length-1
-            //[1,3,4,5] 2
             while(left < right){
                 //利用位运算，等效于 parseInt((left+right)/2)
                 let mid = (left+right) >> 1

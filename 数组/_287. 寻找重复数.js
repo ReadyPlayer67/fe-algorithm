@@ -9,7 +9,7 @@ var findDuplicate = function(nums) {
     //定义一个快指针和慢指针，他们的next等于nums[slow]/nums[fast]
     let slow = 0
     let fast = 0
-    //快指针每次走两步，慢指针走一步，知道他们相遇
+    //快指针每次走两步，慢指针走一步，直到他们相遇
     do{
         slow = nums[slow]
         fast = nums[nums[fast]]

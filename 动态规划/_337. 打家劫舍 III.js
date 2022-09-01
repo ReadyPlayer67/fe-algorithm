@@ -44,3 +44,29 @@ var rob = function(root) {
     map.set(root,ret)
     return ret
 };
+
+//官方解法
+var rob2 = function(root) {
+  //初始化两个map,两个map的key都为当前节点
+  //f的value表示偷该节点的房屋所能获取的最大收益
+  const f = new Map()
+  //g的value表示不偷该节点的房屋所能获取的最大收益
+  const g = new Map()
+  function dfs(node){
+    //边界情况
+    if(node === null){
+      return
+    }
+    //由于每个节点依赖他的子节点的最大收益，所以我们进行后序遍历
+    dfs(node.left)
+    dfs(node.right)
+    //如果偷该节点，那么他的左右子节点肯定不能偷了，此时最大收益就等于g(node.left)+g(node.right)
+    f.set(node,node.val + (g.get(node.left) || 0) + (g.get(node.right) || 0))
+    //如果不偷该节点，那么左右子节点有可能偷有可能不偷，我们取这两者的最大值即可
+    //所以此时最大收益为Math.max(f(node.left),g(node.left))+Math.max(f(node.right),g(node.right))
+    g.set(node,Math.max(f.get(node.left) || 0,g.get(node.left) || 0) + Math.max(f.get(node.right) || 0, g.get(node.right) || 0))
+  }
+  dfs(root)
+  //最后返回根节点f和g的最大值即可
+  return Math.max(f.get(root) || 0,g.get(root) || 0)
+};
