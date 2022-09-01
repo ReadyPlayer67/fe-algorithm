@@ -54,7 +54,7 @@ const exist = function(board, word) {
         //把board[i][j]标记为null，意思是从这个位置过来的
         //这样下一步往四个方向继续查找的时候就不会原路返回了（直接进入letter !== word[cur]这个条件）
         board[i][j] = null
-        //往四个方向查找下一个字母，cur+1
+        //往四个方向查找下一个字母，cur+1dang
         const ret = find(i+1,j,cur+1) ||
                     find(i-1,j,cur+1) ||
                     find(i,j+1,cur+1) ||
