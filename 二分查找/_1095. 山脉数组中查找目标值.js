@@ -37,7 +37,7 @@ var findInMountainArray = function(target, mountainArr) {
         }
     }
     //找到顶点后先在左侧的升序数组中利用二分找target
-    const top = left
+    let top = left
     right = top
     left = 0
     let ret = -1
