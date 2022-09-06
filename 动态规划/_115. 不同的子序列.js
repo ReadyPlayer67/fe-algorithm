@@ -53,7 +53,7 @@ var numDistinct2 = function(s, t) {
     }
     for(let i=1;i<=n;i++){
         for(let j=1;j<=m;j++){
-            if(j>=j){
+            if(j>=i){
                 if(t[i-1] === s[j-1]){
                     dp[i][j] = dp[i-1][j-1]+dp[i][j-1]
                 }else{
