@@ -24,7 +24,7 @@ var change = function(amount, coins) {
                 dp[i][j] = dp[i-1][j]
                 continue
             }
-            //递推公式，当前方法总数等于不使用coins[i]的方法总数加上dp[j - coins[i]]
+            //递推公式，当前方法总数等于不使用coins[i]的方法总数加上dp[i][j - coins[i]]
             dp[i][j] = dp[i-1][j]+dp[i][j-coins[i]]
         }
     }
