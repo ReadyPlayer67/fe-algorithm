@@ -36,3 +36,48 @@ var search = function(nums, target) {
     //最后没找到返回-1
     return -1
 };
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+var search2 = function(nums, target) {
+  //更清晰的解法，首先通过二分找到旋转点的位置
+  //然后通过target和nums[0]的大小关系，判断target在左边还是右边的升序数组中
+  //最后就变成了在有序数组中寻找target
+  let left = 0
+  let right = nums.length-1
+  //寻找旋转点下标
+  while(left<right){
+    //这里注意是(left+right+1)>>1而不是(left+right)>>1，是为了避免死循环
+    //因为当数组长度为2时，下标0+1>>1还是0，这样如果nums[0]<=nums[mid]那么left和mid就永远是0，陷入死循环
+    let mid = (left+right+1)>>1
+    if(nums[0]<=nums[mid]){
+      left = mid
+    }else{
+      right = mid-1
+    }
+  }
+  //此时left和right都指向旋转点的位置
+  //如果target>=nums[0]，说明target在左边的升序数组中，重置left即可
+  if(target >= nums[0]){
+    left=0
+  }else{
+    //如果target<nums[0]，说明target在右边的升序数组中，重置right，并且left++
+    right = nums.length-1
+    left++
+  }
+  //二分法查找有序数组中的target
+  while(left<=right){
+    let mid = (left+right)>>1
+    if(target<nums[mid]){
+      right = mid-1
+    }else if(target>nums[mid]){
+      left = mid+1
+    }else{
+      return mid
+    }
+  }
+  return -1
+};
