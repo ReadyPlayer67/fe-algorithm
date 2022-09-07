@@ -24,4 +24,22 @@ var findMin = function(nums) {
     return nums[left]
 };
 
-findMin([4,5,6,7,0,1,2])
+var findMin2 = function(nums) {
+  //二分求旋转数组公式解法，先用二分求出旋转点的下标
+  const n = nums.length
+  let left = 0
+  let right = n-1
+  while(left<right){
+    let mid = (left+right+1)>>1
+    if(nums[0] <= nums[mid]){
+      left = mid
+    }else{
+      right = mid-1
+    }
+  }
+  //此时left=right=旋转点下标，旋转点是nums中的最大值
+  //我们判断一下旋转点是否是数组最后一位，如果是返回nums[0]，如果不是就返回nums[left+1]
+  return left+1 < n ? nums[left+1] : nums[0]
+};
+
+findMin2([4,5,6,7,0,1,2])
