@@ -25,7 +25,7 @@ var canPartition = function(nums) {
                 }
             }else{//填充dp数组
                 //如果当前target>=nums[i]，就可以用背包问题的递归公式进行推导
-                //取拿这个数字和不拿这个数字凑到的总和比较，取最大值
+                //拿这个数字和不拿这个数字凑到的总和比较，取最大值
                 if(j >= nums[i]){
                     dp[i][j] = Math.max(dp[i-1][j],dp[i-1][j-nums[i]]+nums[i])
                 }else{
