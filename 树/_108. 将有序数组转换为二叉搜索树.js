@@ -29,3 +29,14 @@ var sortedArrayToBST = function(nums) {
     }
     return dfs(0,nums.length-1)
 };
+
+var sortedArrayToBST2 = function(nums) {
+  if(!nums.length){
+    return null
+  }
+  let mid = nums.length >> 1
+  let root = new TreeNode(nums[mid])
+  root.left = sortedArrayToBST(nums.slice(0,mid))
+  root.right = sortedArrayToBST(nums.slice(mid+1))
+  return root
+};
