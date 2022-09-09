@@ -24,7 +24,7 @@ function missingElement(nums,k){
   //两者的差值就是丢失了多少个整数，那么现在我们就要确定i的值，找到了i，第k个缺失的整数就在数字nums[i-1]和nums[i]之间，即：
   //nums[i-1]+k-missing(i-1,nums)，missing(i-1,nums)即i-1位之前丢失的整数总数，用k减去他就得到nums[i-1]应当加的数
   const length = nums.length
-  //如果最后一位数丢失的整数个数都小于k，那么缺失的数一定在nums[length-]之后了
+  //如果最后一位数丢失的整数个数都小于k，那么缺失的数一定在nums[length-1]之后了
   if(k > missing(length-1, nums)){
     return nums[length-1] + k - missing(length-1,nums)
   }
