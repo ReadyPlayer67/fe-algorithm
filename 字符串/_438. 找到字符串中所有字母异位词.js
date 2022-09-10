@@ -35,3 +35,31 @@ var findAnagrams = function(s, p) {
 function isValid(sMap,map){
     return map.toString() === sMap.toString()
 }
+
+/**
+ * @param {string} s
+ * @param {string} p
+ * @return {number[]}
+ */
+var findAnagrams2 = function(s, p) {
+    let m = s.length,n = p.length
+    if(m<n) return []
+    let ret = []
+    let cnt1 = new Array(26).fill(0)
+    let cnt2 = new Array(26).fill(0)
+    for(let i=0;i<n;i++){
+        cnt1[s[i].charCodeAt()-'a'.charCodeAt()]++
+        cnt2[p[i].charCodeAt()-'a'.charCodeAt()]++
+    }
+    if(cnt1.toString() === cnt2.toString()){
+        ret.push(0)
+    }
+    for(let i=n;i<m;i++){
+        cnt1[s[i-n].charCodeAt()-'a'.charCodeAt()]--
+        cnt1[s[i].charCodeAt()-'a'.charCodeAt()]++
+        if(cnt1.toString() === cnt2.toString()){
+            ret.push(i-n+1)
+        }
+    }
+    return ret
+};
