@@ -54,3 +54,27 @@ function sortArray2(nums){
 }
 
 console.log(sortArray2([1,3,2,4]))
+
+/**
+ * 快速排序
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var sortArray3 = function(nums) {
+    //递归终止条件，nums.length<=1
+    if(nums.length <= 1){
+        return nums
+    }
+    //挑选一个随机值比对，比flag小的放入left数组，比flag大的放入right数组
+    let flag = nums[0]
+    let left = [],right = []
+    for(let i = 1; i < nums.length; i++){
+        if(nums[i] < flag){
+            left.push(nums[i]);
+        }else{
+            right.push(nums[i]);
+        }
+    }
+    //递归对left，right进行快速排序，最终和flag合并为一个数组
+    return [...sortArray(left),flag,...sortArray(right)]
+};
