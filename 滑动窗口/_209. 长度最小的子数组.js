@@ -40,10 +40,11 @@ var minSubArrayLen2 = function(target, nums) {
             right++
         }
         if(sum >= target){
+            debugger
             min = Math.min(min,right-i)
         }
     }
     return min === Infinity ? 0 :min
 };
 
-console.log(minSubArrayLen(7,[2,3,1,2,4,3]))
+console.log(minSubArrayLen2(7,[2,3,1,2,4,3]))
