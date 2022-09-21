@@ -26,7 +26,7 @@ function dfs(i,target,nums,dp){
     if(i === 0){
         ret = Number(nums[i] === target) + Number(-nums[i] === target)
     }else{
-        //推导公式：因为每个树有两个选择+或者-
+        //推导公式：因为每个数有两个选择+或者-
         //[1,1,1,1,1] target=3的方法数就等于 [1,1,1,1] target=3-1=2的方法数加上[1,1,1,1]，target=3+1=4的方法数
         ret = dfs(i-1,target+nums[i],nums,dp) + dfs(i-1,target-nums[i],nums,dp)
     }
