@@ -12,7 +12,7 @@
  * @return {number[]}
  */
 var rightSideView = function(root) {
-    //还是老方法，dfs
+    //还是老方法，层序遍历
     let ret = []
     if(!root) return ret
     let queue = [root]
