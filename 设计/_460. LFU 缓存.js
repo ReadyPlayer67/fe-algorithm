@@ -10,7 +10,7 @@ var LFUCache = function(capacity) {
     //times存放key:缓存使用次数
     this.times = new Map()
     //为了使get和put时间复杂度都为O(1)，不能进行遍历
-    //我们还需要一个useMap，key是使用次数，value是一个set，里面存放的是key（因为可能有多个key使用了相同的次数）
+    //我们还需要一个useMap，key是使用次数，value是一个set，里面存放的是key组成的Set（因为可能有多个key使用了相同的次数）
     this.useMap = new Map()
     //当前缓存中使用次数最少得缓存，所使用的次数
     this.min = 0
@@ -73,7 +73,7 @@ LFUCache.prototype.put = function(key, value) {
         if(this.size === this.values.size){
             //通过this.min获取到使用最少次数的key所在set
             minSet = this.useMap.get(this.min)
-            //获取minSet的第一项（题目要求当两个或更多个键具有相同使用频率时，应该去除最久未使用的键，也就是最新添加到set中的key）
+            //获取minSet的第一项（题目要求当两个或更多个键具有相同使用频率时，应该去除最久未使用的键，也就是最早添加到set中的key）
             let delKey = minSet.values().next().value
             //从minSet，this.values,this.times中删除delKey
             minSet.delete(delKey)
