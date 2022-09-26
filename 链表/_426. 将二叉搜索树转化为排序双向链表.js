@@ -71,7 +71,7 @@ var treeToDoublyList = function(root) {
     dfs(cur.left)
     //如果当前prev===null，代表cur是二叉树第一个节点（最小的）
     if(prev === null){
-      //此时直接想cur赋值给head，作为链表的入口
+      //此时直接将cur赋值给head，作为链表的入口
       head = cur
     }else{
       //否则就令prev.right = cur，连接上right指针
