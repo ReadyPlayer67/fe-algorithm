@@ -88,7 +88,7 @@ var calculate2 = function(s) {
       nums.push(Number(str))
     }else{
       //如果是运算符,需要将运算符push到ops中
-      //在push之前，使用现有的ops和nums进行计算，知道遇到左边最近的一个(或ops为空为止，将计算结果放入到nums中
+      //在push之前，使用现有的ops和nums进行计算，直到遇到左边最近的一个(或ops为空为止，将计算结果放入到nums中
       //为防止 () 内出现的首个字符为运算符，将所有的空格去掉，并将 (- 替换为 (0-，(+ 替换为 (0+
       if (i > 0 && (s[i - 1] === '(' || s[i - 1] === '+' || s[i - 1] === '-')) {
         nums.push(0);
