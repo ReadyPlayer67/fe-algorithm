@@ -30,6 +30,8 @@ var findMin2 = function(nums) {
   let left = 0
   let right = n-1
   while(left<right){
+    //这里求中点为(left+right+1)>>1而不是(left+right)>>1，原因是为了避免死循环
+    //考虑left=0,right=1,mid=(0+1)>>1=0，此时如果left=mid就一直为0，陷入死循环
     let mid = (left+right+1)>>1
     if(nums[0] <= nums[mid]){
       left = mid
