@@ -15,7 +15,7 @@ var longestOnes = function(nums, k) {
         if(nums[right] === 0){
             zeros++
         }
-        //如果zeros>k，就尝试移动左边界，指导zeros<=k
+        //如果zeros>k，就尝试移动左边界，直到zeros<=k
         while(zeros > k){
             if(nums[left] === 0){
                 zeros--
