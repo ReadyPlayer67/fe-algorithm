@@ -15,7 +15,7 @@ var rotateRight = function(head, k) {
     if (k === 0 || !head || !head.next) {
         return head;
     }
-    //先遍历一遍链表，计算出链表长度n，选择k次的效果和k%n效果是一样的
+    //先遍历一遍链表，计算出链表长度n，旋转k次的效果和k%n效果是一样的
     //因为每n次移动都会让链表变为原状，因此我们要断开第n - k % n个节点后面的指针即可
     //即新链表最后一个节点为原来链表的第n - k % n个节点
     let cur = head
