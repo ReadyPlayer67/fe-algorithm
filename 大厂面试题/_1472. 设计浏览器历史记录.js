@@ -24,7 +24,7 @@ BrowserHistory.prototype.visit = function(url) {
  * @return {string}
  */
 BrowserHistory.prototype.back = function(steps) {
-    for(let i=1;i<=steps;i++){
+    for(let i=0;i<steps;i++){
         //如果后退栈中还有值，先将当前页push到前进栈中，再把当前页替换为后退栈的栈顶元素
         if(this.backStack.length > 0){
             this.forwarStack.push(this.currentPage)
@@ -40,7 +40,7 @@ BrowserHistory.prototype.back = function(steps) {
  */
 BrowserHistory.prototype.forward = function(steps) {
     //和后退同理，反着来了一遍
-    for(let i=1;i<=steps;i++){
+    for(let i=0;i<steps;i++){
         if(this.forwarStack.length > 0){
             this.backStack.push(this.currentPage)
             this.currentPage = this.forwarStack.pop()
