@@ -12,7 +12,7 @@ var maxProfit = function(prices) {
         return new Array(2).fill(0)
     })
     //初始化dp[0],dp[1]，和之前一样dp[i][0]是当天持有股票身上的现金
-    //dp[i][1]是当天持有股票时身上的现金
+    //dp[i][1]是当天未持有股票时身上的现金
     dp[0][0] = -prices[0]
     dp[0][1] = 0
     dp[1][0] = Math.max(-prices[0],-prices[1])
