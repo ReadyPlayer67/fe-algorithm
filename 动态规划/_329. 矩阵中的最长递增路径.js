@@ -9,7 +9,7 @@ var longestIncreasingPath = function(matrix) {
   const n = matrix[0].length
   //初始化一个dp数组做缓存，dp[i][j]表示起点为第i行第j列的单元格的最长递增路径长度
   let dp = new Array(m).fill(0).map(x=>new Array(n).fill(0))
-  //遍历每个单元格作为起点，求出每个单元格的最长递增路径，同时更新全局最大值
+  //遍历每个单元格作为起点，求出经过该单元格的最长递增路径长度，同时更新全局最大值
   for(let i=0;i<m;i++){
     for(let j=0;j<n;j++){
       ret = Math.max(ret,backtrack(i,j))
