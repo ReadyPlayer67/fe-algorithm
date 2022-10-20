@@ -29,7 +29,7 @@ var combinationSum = function(candidates, target) {
             //所以我们限制start，保证2,3下一轮搜索的时候只会从3开始遍历，就不会产生重复解
             path.push(num)
             backtrack(sum+num,path,i)
-            path.pop(num)
+            path.pop()
         }
     }
 };
