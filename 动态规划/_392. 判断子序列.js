@@ -4,7 +4,7 @@
  * @return {boolean}
  */
 var isSubsequence = function(s, t) {
-    //动态规划解法
+    //动态规划解法，其实就是求两个字符串的最长公共子序列长度是否等于s的长度，求最长公共子序列见1143题
     let m = s.length
     let n = t.length
     //初始化dp，dp[i][j]表示字符串s在[1,i]区间的子串和字符串t在[1,j]区间的子串，两者相同子序列的长度
@@ -39,3 +39,5 @@ var isSubsequence2 = function(s, t) {
     //当t遍历完以后，检查i是否等于s的长度，也就是i是否到达了字符串尾部，到达了s就是t的子序列
     return i === s.length
 };
+
+isSubsequence('abc','ahbgdc')

@@ -4,7 +4,6 @@
  * @return {number}
  */
 var longestCommonSubsequence = function(text1, text2) {
-    //这题和392.判断子序列很类似，唯一的区别就在递推公式上
     let m = text1.length
     let n = text2.length
     //dp[i][j]表示长度为[0, i - 1]的字符串text1与长度为[0, j - 1]的字符串text2的最长公共子序列为dp[i][j]
