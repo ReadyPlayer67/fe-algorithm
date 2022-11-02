@@ -16,8 +16,8 @@ var isSubsequence = function(s, t) {
             if(s[i-1]===t[j-1]){
                 dp[i][j] = dp[i-1][j-1]+1
             }else{
-                //否则就没变化，等于前一位
-                dp[i][j] = dp[i][j-1]
+                //否则dp[i][j] 应该是 dp[i - 1][j] 和 dp[i][j - 1] 的最大值
+                dp[i][j] = Math.max(dp[i][j-1],dp[i-1][j])
             }
         }
     }
