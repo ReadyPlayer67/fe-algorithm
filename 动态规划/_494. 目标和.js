@@ -5,7 +5,7 @@
  */
 var findTargetSumWays = function(nums, target) {
     //这题可以转换为背包问题，但是我想到的是递归+记忆化搜索
-    //首先初始化dp,dp[i]代表当前可以使用到的nums下标，dp[i][j]表示当前target
+    //首先初始化dp，dp[i][j]表示用i~nums.length-1区间的数和等于当前target的表达式数目
     //由于target可以是负数，我们用一个对象而不是数组来存储
     let dp = new Array(nums.length).fill(-1).map(x=>{
         return {}
